@@ -52,17 +52,7 @@ The role of a callback function (you can also call the handler function but the 
 
 To make this more clear, let us write our second program. Let us name this file `fast-food.js`.
 
-```js
-function handleCustomerOrder(order) {
-	setTimeout(() => {
-		console.log(`Order of ${order} completed and served!`);
-	}, 1000);
-}
-
-handleCustomerOrder('FRIES');
-
-console.log('Order Placed!');
-```
+<iframe height="400px" width="100%" src="https://repl.it/@amandeepmittal/module1-1?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
 To run this program type below command and you will get the following output:
 
