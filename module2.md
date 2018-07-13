@@ -10,7 +10,112 @@ We can catoegorize different modules in Node.js. Overall there are three types o
 - local modules
 - third party modules
 
-To use any of the above type of module, we use a `require()` function to include them in our programs. Each Node.js module type uses `exports` to make functions avaliable to different JavaScript files. Loading a module is a synchronous operation.a module is cached in memory such that calling `require()` returns immediately and return the same object as `exports` return. Any variable or a function defined inside a JavaScript file is local to that file only. This means if you are not exporting that property using `exports` then you cannot `require()` it to use it another file.
+In simple terms, a module is nothing but an encapsulation over a single piece of code. Let us illustrate this by giving an example. Create a file called `hello.js` with the following code.
+
+```js
+// hello.js
+sayHello = () => {
+	return 'Hello';
+};
+```
+
+This file can be thought of as utility that provides a function which returns the result hello such that we do not have to write this same piece of code multiple times in out Node.js app. We can use this utility multiple times to get the desired result. To use this utility, we must use a `require()` function to include it in other programs. But just requiring the file, will it work?
+
+The answer is no. Every function or variable declared inside a Node.js file, is local to that module. To access any of the function or variable, in our above example, the function `sayHello()` we need to first export it. Each Node.js module type uses `module.exports` to make functions avaliable to different JavaScript files. We can re-write our example as:
+
+```js
+// hello.js
+module.exports = sayHello = () => {
+	return 'Hello';
+};
+```
+
+Loading a module is a synchronous operation. A module is cached in memory such that calling `require()` returns immediately and return the same object as `module.exports` return. Any variable or a function defined inside a JavaScript file is local to that file only. This means if you are not exporting that property using `exports` then you cannot `require()` it to use it another file. Now we can use the sayHello function in our `index.js` file by importing the file `hello.js`, passing the fall path as the only argument of require function.
+
+```js
+// index.js
+const greet = require('./hello.js');
+```
+
+The above code is equivalent to:
+
+```js
+const greet = {
+	sayHello: () => {
+		return 'Hello';
+	}
+};
+```
+
+We can now access sayHello function inside index.js file.
+
+```js
+// index.js
+const greet = require('./hello.js');
+
+greet.sayHello();
+
+// Output: Hello
+```
+
+The keyword require returns an object returns the reference of the value of exports for a given file. If we re-assign `module.exports` to a different object or a function then any properties added to the original or previous `module.exports` object will become unaccessible. What if you want to provide mutliple properties to be accessed via `hello.js`? What if there are two functions that need to be accessed in `index.js`, for example:
+
+```js
+// hello.js
+module.exports = sayHello = () => {
+	return 'Hello';
+};
+
+module.exports = sayHi = () => {
+	return 'Hi';
+};
+```
+
+The above snippet is not the correct way to export from a module. When you want to export multiple objects or functions from a local module, instead of using module.exports we use simply exports. The reason is that `module.exports` refers to the whole module and will only export the last reference, in our example, `sayHi()`. However, `exports` refers to the same object as `module.export`. Take a look at below. Both objects means the same.
+
+```js
+const exports = module.exports{};
+
+// is equivalent to
+
+module.exports = {
+	sayHello: () => {
+		return 'Hello';
+	},
+
+	sayHi: () => {
+		return 'Hi';
+	}
+};
+```
+
+Thus, our `hello.js` can be written as:
+
+```js
+// hello.js
+exports = sayHello = () => {
+	return 'Hello';
+};
+
+exports = sayHi = () => {
+	return 'Hi';
+};
+```
+
+And in `index.js`:
+
+```js
+//index.
+const greet = require('./hello.js');
+
+greet.sayHello();
+
+// Output: Hello
+
+greet.sayHi();
+
+// Output: Hi
+```
 
 ## Built-in Modules
 
