@@ -1,6 +1,6 @@
 # Events and Streams
 
-Traditionally, in Nodejs, to process a data in the form of a file by reading and writing consumes a lot more memory since this processing methods needs to load the file every time it has to read or write that file. This is considered as a waste of resources. Node.js asynchornous nature provides two suitable options for us to work with. They are emitting events and streams. In this section, we will be taking a look into both of them.
+Traditionally, in a web server, to process a data in the form of a file by reading and writing consumes a lot more memory since this processing methods needs to load the file every time it has to read or write that file. This is considered as a waste of resources. Think of it, in terms of scalbility and Big Data if we are wasting resources, we are going to compromise a lot. Node.js asynchornous nature provides two suitable options for us to work with and to provide a flow of data that consumes less resources since Node.js is based on non-blokcing asynchronous model. They are emitting events and streams. In this section, we will be taking a look into both of them.
 
 ## EventEmitter Class
 
