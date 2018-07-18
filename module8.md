@@ -1,10 +1,10 @@
 # Node.js Eco System
 
-In previous module we learned that Node.js has three types of packages or modules. In this tutorial, we are going ot discuss about the third party modules that caan only be accessed through `npm`.
+In one of the previous module, we learned that Node.js has three types of packages or modules. In this tutorial, we are going to discuss the third party modules that can only be accessed through `npm`.
 
 ## Node Packages
 
-`npm` is a noe package manager. It comes with Node.js installation and is completely accessible through command line once installed. It provides two main functionalities to a Node.js developer:
+`npm` is the node package manager. It comes with Node.js installation and is completely accessible through command line once installed. It provides two main functionalities to a Node.js developer:
 
 - Online repositories for node.js packages/modules which are searchable on `npmjs.com`.
 
@@ -18,9 +18,9 @@ npm install --save express
 
 Global packages are installed in `/lib/node_modules/` of your computer. This means you would have to use sudo to install packages globally, which could cause permission errors when resolving third-party dependencies, as well as being a security concern.
 
-To install a gloabal package, you have to either use --global flag or its shorthand -g.
+To install a global package, you have to either use --global flag or its shorthand -g.
 
-Local modules are further divided into two types of depenedencies: `devDepenednecies` and `dependencies`. The difference between these two, is that `devDependencies` are modules which are only required during development, while `dependencies` are modules which are required at run the project on a real server. To save a dependency as a devDependency on installation we need to do an `npm install --save-dev`, instead of just an `npm install --save`.
+Local modules are further divided into two types of dependencies: `devDepenednecies` and `dependencies`. The difference between these two is that `devDependencies` are modules which are only required during development, while `dependencies` are modules which are required at run the project on a real server. To save a dependency as a devDependency on installation we need to do an `npm install --save-dev`, instead of just an `npm install --save`.
 
 A nice shorthand for installing a devDependency that I like to use is `npm i -D`. The shorthand for saving a regular dependency is `-S` instead of `-D`.
 
@@ -145,7 +145,7 @@ An example:
 
 The above is a `package.json` of `express` module.
 
-If not using a specific flag such as -s or --dev and installing a module with command `npm install express` will install the module in `node_modules` folder locally but the `package.json` that keep records of every dependency we are using in a project will not be updated with our addition. Thus, the package will be development specific, will not be installed in runtimme environment. Make sure, you always use a proper flag and keep `package.json` file updated.
+If not using a specific flag such as -s or --dev and installing a module with the command `npm install express` will install the module in `node_modules` folder locally but the `package.json` that keep records of every dependency we are using in a project will not be updated with our addition. Thus, the package will be a development specific, will not be installed in runtime environment. Make sure, you always use a proper flag and keep `package.json` file updated.
 
 ## Packages of Interest
 

@@ -4,7 +4,7 @@ In this tutorial, we are going to start by taking a look at how to interact and 
 
 ## Process Object
 
-The `process` object in Node.js is a global object that can be accessed inside any module without requiring it. There are very few global objects or propeties provided in Node.js and `process` is one of them. It is an essential component in Node.js ecosystem as it provides various information sets about the runtime of a program. To explore we will use one of its properties which is called `process.versions`. This property tells us the information about Node.js version we have installed. It has to be used with `-p` flag.
+The `process` object in Node.js is a global object that can be accessed inside any module without requiring it. There are very few global objects or properties provided in Node.js and `process` is one of them. It is an essential component in Node.js ecosystem as it provides various information sets about the runtime of a program. To explore we will use one of its properties which is called `process.versions`. This property tells us the information about Node.js version we have installed. It has to be used with `-p` flag.
 
 ```shell
 $ node  -p "process.versions"
@@ -38,7 +38,7 @@ node -p "process.release"
   headersUrl: 'https://nodejs.org/download/release/v8.11.2/node-v8.11.2-headers.tar.gz' }
 ```
 
-These are some of the different commands that we can use in command line to access information otherwise no module can provide. This `process` object is an instance of EventEmitter class and it does it contain its own pre-defined events such as `exit` which can be used to know whena program in Node.js has completed its execution. Run the below program and you can observe that the result comes up with status code `0`. In Node.js this status code means that a program has run successfully.
+These are some of the different commands that we can use in a command line to access information otherwise no module can provide. This `process` object is an instance of EventEmitter class and it does it contain its own pre-defined events such as `exit` which can be used to know when a program in Node.js has completed its execution. Run the below program and you can observe that the result comes up with status code `0`. In Node.js this status code means that a program has run successfully.
 
 ```js
 process.on('exit', code => {
@@ -64,7 +64,7 @@ Exited with status code: 0
 - process.stdout: a writable stream
 - process.stderr: a wriatable stream to recognize errors
 
-Using `argv` you can always access to arguments that are passed in a command line. `argv` is an array which has Node itself as the first element and the absolute path of the file as the second element. From third element onwards it can have as many arguments.
+Using `argv` you can always access to arguments that are passed in a command line. `argv` is an array which has Node itself as the first element and the absolute path of the file as the second element. From the third element onwards it can have as many arguments.
 
 Try the below program to get more insight of how you can use these various properties and functions.
 
@@ -87,6 +87,8 @@ Hello World!
 1: /Users/amanhimself/Desktop/articles/nodejs-text-tuts/test.js
 ```
 
+[Run](https://repl.it/@amandeepmittal/41)
+
 Now try running the same command by providing an extra argument.
 
 ```shell
@@ -99,17 +101,17 @@ Hello World!
 2: first argument
 ```
 
-If you want to provide strings you to put them inside quote as the command line interface recognize spaces as a break between two different string literals.
+If you want to provide strings you to put them inside quotea as the command line interface recognize spaces as a break between two different string literals.
 
 ## Manipulating File System
 
-As a programmer chances are that you are going access a file system in some application or the other. This includes reading, writing, updating, deleting and renaming a file. Node.js built-in module `fs` takes care of these operations and you can import it in your program using the following syntax:
+As programmer, there chances are that you are going to access a file system in some application or the other. This includes reading, writing, updating, deleting and renaming a file. Node.js built-in module `fs` takes care of these operations and you can import it into your program using the following syntax:
 
 ```js
 const fs = require('fs');
 ```
 
-All of these operations in Node.js have a synchronous and an asynchronous way to exectue the function. Let us take a look at all the important and common methods that we mght use using `fs` module.
+All of these operations in Node.js have a synchronous and an asynchronous way to execute the function. Let us take a look at all the important and common methods that we might use using the `fs` module.
 
 ### Opening a File
 
@@ -140,7 +142,7 @@ fs.readFile('/path/to/file', (err, data) => {
 });
 ```
 
-The callback possesses two arguments in which `data` contains the content of the file. If character encoding is specified, a raw buffer is returned. To read the file in human readable form we have to mention `utf-8` character encoding as the second argument. Let us understand this better with the following example. We will be using the asynchornous way.
+The callback possesses two arguments in which `data` contains the content of the file. If character encoding is specified, a raw buffer is returned. To read the file in human readable form we have to mention `utf-8` character encoding as the second argument. Let us understand this better with the following example. We will be using the asynchronous way.
 
 ```js
 const fs = require('fs');
@@ -162,6 +164,8 @@ Execution finished
 Asynchronous read: I am Text file that contains MORE data.
 ```
 
+[Run](https://repl.it/@amandeepmittal/42)
+
 The last console.log statement runs before because `fs.readFile` is an asynchronous function. To run make it synchornous, just replace `fs.readFile` with `fs.readFileSync`.
 
 ### **Writing in a File**
@@ -173,23 +177,19 @@ const fs = require('fs');
 
 console.log('Execution finished');
 
-fs.writeFile(
-	'./extra-files/dest.txt',
-	'Using Nodejs File system',
-	(err, data) => {
+fs.writeFile('./dest.txt', 'Using Nodejs File system', (err, data) => {
+	if (err) {
+		return console.error(err);
+	}
+	console.log('Data written!');
+
+	fs.readFile('./dest.txt', function(err, data) {
 		if (err) {
 			return console.error(err);
 		}
-		console.log('Data written!');
-
-		fs.readFile('./extra-files/dest.txt', function(err, data) {
-			if (err) {
-				return console.error(err);
-			}
-			console.log('Asynchronous read: ' + data.toString());
-		});
-	}
-);
+		console.log('Asynchronous read: ' + data.toString());
+	});
+});
 ```
 
 The output of the above program will be
@@ -199,6 +199,8 @@ Execution finished
 Data written!
 Asynchronous read: Using Nodejs File system
 ```
+
+[Run](https://repl.it/@amandeepmittal/43)
 
 ### Updating a File
 
@@ -210,7 +212,7 @@ const fs = require('fs');
 console.log('Execution finished');
 
 fs.appendFile(
-	'./extra-files/dest.txt',
+	'./dest.txt',
 	'\n Now we are appending this file!',
 	(err, data) => {
 		if (err) {
@@ -218,7 +220,7 @@ fs.appendFile(
 		}
 		console.log('Data written!');
 
-		fs.readFile('./extra-files/dest.txt', function(err, data) {
+		fs.readFile('./dest.txt', function(err, data) {
 			if (err) {
 				return console.error(err);
 			}
@@ -237,6 +239,8 @@ Asynchronous read: Using Nodejs File system
  Now we are appending this file!
 ```
 
+[Run](https://repl.it/@amandeepmittal/44)
+
 ### Deleting a File
 
 To delete a file using `fs` module, we make use of `fs.unlink()` method.
@@ -244,7 +248,7 @@ To delete a file using `fs` module, we make use of `fs.unlink()` method.
 ```javascript
 const fs = require('fs');
 
-fs.unlink('./extra-files/third-file.js', error => {
+fs.unlink('./third-file.js', error => {
 	if (error) {
 		console.log(error);
 	}
@@ -256,7 +260,7 @@ If there is a success in deleting the file specified, the last console statement
 
 ## Understanding Buffer
 
-Binary data is simply a set or a collection of `1` and `0`. Each number in a binary is called a _bit_. Computer converts the data to this binary format to store and perform operations. For example, the following are five different binaries:
+Binary data is simply a set or a collection of `1` and `0`. Each number in a binary is called a _bit_. A computer converts the data to this binary format to store and perform operations. For example, the following are five different binaries:
 
 `10, 01, 001, 1100, 0010011`
 
@@ -324,5 +328,7 @@ The output of the above program will be:
 
 This is a buffer example.
 ```
+
+[Run](https://repl.it/@amandeepmittal/45)
 
 To examine the size of a buffer, we can use `length` method like we did in the above example. The last method `.toString()` let us convert buffer to a readable string, in our case, the utf-8 encoded. `.toString()` by default converts a buffer to a utf-8 format string. This is how you decode a buffer.

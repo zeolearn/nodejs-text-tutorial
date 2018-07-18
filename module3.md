@@ -1,10 +1,10 @@
 # Events and Streams
 
-Traditionally, in a web server, to process a data in the form of a file by reading and writing consumes a lot more memory since this processing methods needs to load the file every time it has to read or write that file. This is considered as a waste of resources. Think of it, in terms of scalbility and Big Data if we are wasting resources, we are going to compromise a lot. Node.js asynchornous nature provides two suitable options for us to work with and to provide a flow of data that consumes less resources since Node.js is based on non-blokcing asynchronous model. They are emitting events and streams. In this section, we will be taking a look into both of them.
+Traditionally, in a web server, to process a data in the form of a file by reading and writing consumes a lot more memory since these processing methods needs to load the file every time it has to read or write that file. This is considered a waste of resources. Think of it, in terms of scalability and Big Data if we are wasting resources, we are going to compromise a lot. Node.js asynchronous nature provides two suitable options for us to work with and to provide a flow of data that consumes fewer resources since Node.js is based on non-blocking asynchronous model. They are emitting events and streams. In this section, we will be taking a look at both of them.
 
 ## EventEmitter Class
 
-EventEmitters are one of the core idea behind the architecure of event driven programming or asynchronous programming in Node.js. An EventEmitter is an object and in Node.js any object that emits an event is a instance of EventEmitter class. What is an event? Every action took by the Node.js program such initialing the web server and closing terminating the program when there is no request left to fulfill are considered as two separate events.
+EventEmitters are one of the core ideas behind the architecture of event-driven programming or asynchronous programming in Node.js. An EventEmitter is an object and in Node.js any object that emits an event is an instance of EventEmitter class. What is an event? Every action took by the Node.js program such as initialing the web server and closing terminating the program when there is no request left to fulfill are considered as two separate events.
 
 To access the EventEmitter class in a Node.js program, you have to require the `events` module from the Node.js API. To create the object, we then make an instance of the EventEmitter class by calling its constructor function.
 
@@ -22,7 +22,7 @@ const EventEmitter = require('events');
 const eventEmitter = new EventEmitter();
 ```
 
-EventEmitter class provides various pre-defined methods to work with events. These methods are `.on`, `.emit` and `.error`. Emiiting an event from a function can be done triggering a callback function that can be accessed by any other JavaSceipt function. This is like broadcasting.
+EventEmitter class provides various pre-defined methods to work with events. These methods are `.on`, `.emit` and `.error`. Emiting an event from a function can be done triggering a callback function that can be accessed by any other JavaScript function. This is like broadcasting.
 
 The ability to trigger an event can be done by following syntax:
 
@@ -60,7 +60,9 @@ callback runs
 callback runs
 ```
 
-We start by creating an eventEmitter instance through which we get access to `.on` method. `.on` method adds the event by defining the name `invoke` which we use later on in `.emit` to call trigger the callback function assoicated with it.
+[Run](https://repl.it/@amandeepmittal/31)
+
+We start by creating an eventEmitter instance through which we get access to `.on` themethod. The `.on` method adds the event by defining the name `invoke` which we use later on in `.emit` to call trigger the callback function assoicated with it.
 
 There is another function that EventEmitter class provides which is called `.once`. This method only invokes the callback function associated with an event first time when an event is emitted. Consider the example below.
 
@@ -85,11 +87,13 @@ Output
 callback runs
 ```
 
+[Run](https://repl.it/@amandeepmittal/32)
+
 `.once` keep tracks of events as to when they get triggered and how many times they get triggered unlike `.on` method which does not keep track like this. This is a major difference between the two.
 
 ## Understanding Streams
 
-Node.js provide another way to work with data instead of consuming high amount of memory resources and making it cose effective. This what streams do. Basically, streams let you read data from the one source and put into the destination. Streams process data in chunks instead of all at once thus, making them suitable for working with large data sets. Many built-in Node.js modules use streams under the hood. For example, HTTP request and response, TCP sockets, zlib, crypto, fs read and write steams, etc.
+Node.js provide another way to work with data instead of consuming a high amount of memory resources and making it cost effective. This what streams do. Basically, streams let you read data from the one source and put into the destination. Streams process data in chunks instead of all at once thus, making them suitable for working with large datasets. Many built-in Node.js modules use streams under the hood. For example, HTTP request and response, TCP sockets, zlib, crypto, fs read and write streams, etc.
 
 ### Type of Streams
 
@@ -100,7 +104,7 @@ In Node.js there are four types of streams:
 - Duplex
 - Transform
 
-Most common of these are Readable and Writable streams. Readable streams are used to read the data from the source and Writable streams are used to perform write operation of that data to the destination. Duplex streams can be used to peform both read and write operations. Transform is a super set of Duplex streams with only difference is that in this the data can be modified when reading or being written.
+Most common of these are Readable and Writable streams. Readable streams are used to read the data from the source and Writable streams are used to perform the write operation of that data to the destination. Duplex streams can be used to perform both read and write operations. Transform is a superset of Duplex streams with the only difference is that in this the data can be modified when reading or being written.
 
 ### Type of Stream Events
 
@@ -112,13 +116,13 @@ All of these stream types are instances of EventEmitter class which does mean th
 
 ## Readable Streams
 
-A readbale stream lets you read the data from the source. This source can be anything from a buffer, a file, etc. First create a file simple text file from which we are going to read the data using stream.
+A readable stream lets you read the data from the source. This source can be anything from a buffer, a file, etc. First, create a file simple text file from which we are going to read the data using the stream.
 
 ```text
 I am Text file that contains data.
 ```
 
-Now, create a new file called read.js which will implement the functionality of read data from this text file using a readable stream.
+Now, create a new file called read.js which will implement the functionality of reading data from this text file using a readable stream.
 
 ```js
 const fs = require('fs');
@@ -141,18 +145,20 @@ If you run the above program, you will get the following output:
 I am Text file that contains data.
 ```
 
+[Run](https://repl.it/@amandeepmittal/33)
+
 Which is what we wrote inside the text file. To read data using stream we use a function called `createReadStream()` of file system module `fs`.
 
 When there is no data left to read by the readable stream, it automatically ends the callback function. The `.on` method is what we learned in the previous section of EventEmitter class. This signifies that streams use EventEmitter class behind the scenes.
 
 ## Writable Stream
 
-Writeable streams are used to write or insert or append data to a destination. Like readable streams, they are also provided by `fs` module. Create a new file called `wrtte.js` in which are going to use a readbale stream to read data from the source and write it to a destination by creating a new `.txt` file.
+Writeable streams are used to write or insert or append data to a destination. Like readable streams, they are also provided by `fs` module. Create a new file called `wrtte.js` in which are going to use a readable stream to read data from the source and write it to a destination by creating a new `.txt` file.
 
 ```js
 const fs = require('fs');
-const readableStream = fs.createReadStream('./extra-files/abc.txt');
-const writeableStream = fs.createWriteStream('./extra-files/dest.txt');
+const readableStream = fs.createReadStream('./abc.txt');
+const writeableStream = fs.createWriteStream('./dest.txt');
 let data = '';
 
 readableStream.on('data', function(chunk) {
@@ -160,20 +166,24 @@ readableStream.on('data', function(chunk) {
 });
 ```
 
+[Run](https://repl.it/@amandeepmittal/34)
+
 When you run this program, a new file will be created by the writable stream since it has access to file system module. Writable stream uses `.write()` method to output the data on the destination. In the above example, we are creating a new file called `dest.txt` that will contain same data as of `abc.txt`.
 
 ## Piping
 
-Piping is mechanism in which you can read data from the source and write it to the destination without writing so much code like we did above and it does not use `.on` or `.write` methods.
+Piping is a mechanism by which you can read data from the source and write it to the destination without writing so much code like we did above and it does not use `.on` or `.write` methods.
 
 If we are to write above example using pipe, we will write like below:
 
 ```js
 const fs = require('fs');
-const readableStream = fs.createReadStream('./extra-files/abc.txt');
-const writeableStream = fs.createWriteStream('./extra-files/dest.txt');
+const readableStream = fs.createReadStream('./abc.txt');
+const writeableStream = fs.createWriteStream('./dest.txt');
 
 readableStream.pipe(writeableStream);
 ```
+
+[Run](https://repl.it/@amandeepmittal/35)
 
 Notice how many lines of code we have removed. Also, we now only need the source and destination file paths and to read and write data we are using `.pipe()` method.

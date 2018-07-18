@@ -2,7 +2,7 @@
 
 Node.js is a server-side platform for developing web servers, web applications, network servers, and general purpose programming. It is designed in such a way that it handles scalability in network applications leveraging programming language such as JavaScript on a server, asynchronous I/O, and follows other asynchronous paradigms.
 
-Why Node.js is a server side platform and not a programming language in itself? The reason being is that it is built on Google JavaScript Engine technology called V8 on which browsers like Chrome works. It is developed by Ryan Dahl in 2009 and since then the companies like PayPal, Netflix, GoDaddy, Uber, Microsoft have adapted it in their development process especially in web programming. It is also open source and is maintained by large community across the globe.
+Why Node.js is a server side platform and not a programming language in itself? The reason being is that it is built on Google JavaScript Engine technology called V8 on which browsers like Chrome works. It is developed by Ryan Dahl in 2009 and since then the companies like PayPal, Netflix, GoDaddy, Uber, Microsoft have adapted it in their development process especially in web programming. It is also open source and is maintained by a large community across the globe.
 
 I assume, if you are not familiar with jargons like asynchronous I/O, we will be covering what it later in this article. One question you must ask since you are reading this tutorial is that why Node.js is popular?
 
@@ -32,15 +32,17 @@ node index.js
 'Hello from NODEJS!'
 ```
 
+[Run this program](https://repl.it/@amandeepmittal/m10)
+
 ## Event Loop in Node.js
 
 The sole reason behind by Node.js' popularity is its execution model which runs on a single thread. Now, what do we mean by a single thread? Consider this scenario that you are at a fast food joint and there is a queue of individuals who are waiting to order their meals before you. The cash register takes one order at a time. Traditionally, after taking this order he can make the person wait who just placed an order and is standing in front of the queue for his order to complete. This will consume a lot of time and rest of the members in a queue will have to wait not only to place the order but also to receive it.
 
 This is how a traditional web server works. This concept is often called blocking Input/Output (I/O) which refers to the idle of time of other members (or operations or requests in terms of web) just like in our fast food joint. To overcome this problem, Blocking I/O servers came up with multiple threads. In comparison to our example, this means that for every other person who wants to place an order, we assign a cash register. This will consume a lot of resources in the fast joint, just like in a computer this will consume a lot of memory (RAM).
 
-Node.js uses Non-Blocking and asynchronous I/O which make possible to run it on a single thread hence, making it consume fewer resources and a cost effective solution than a traditional one. In terms of the fast food joint, this will work like this. A member of the queue places an order and is then assigned a number by the cash register to wait for his order to complete. Meanwhile, the cash register can take more orders from other members of the queue and behind him, other workers will serve these orders simultaneously. This way no one has to wait in the queue idle and only when an operation completes, the person whom's order gets complete is called.
+Node.js uses Non-Blocking and asynchronous I/O which make possible to run it on a single thread hence, making it consume fewer resources and a cost effective solution than a traditional one. In terms of the fast food joint, this will work like this. A member of the queue places an order and is then assigned a number by the cash register to wait for his order to complete. Meanwhile, the cash register can take more orders from other members of the queue and behind him, other workers will serve these orders simultaneously. This way no one has to wait in the queue idle and only when an operation completes, the person whom's ordered gets complete is called.
 
-Similarly, in Node.js when a request comes from the browser, it is received by an event loop which plays the role of the cash register here. The members standing in the queue is equivalent for the requests waiting in the queue. This queue is called event queue which receives all the orders or requests concurrently. Then the event loop assigns the number to this request in the form of a callback function or a handler function and will only invoke that function when the operation is completed and it has some response to fulfill the request is received. In this way, there is no idle time between two operations in the event queue.
+Similarly, in Node.js when a request comes from the browser, it is received by an event loop which plays the role of the cash register here. The members standing in the queue is equivalent for the requests waiting in the queue. This queue is called an event queue which receives all the orders or requests concurrently. Then the event loop assigns the number to this request in the form of a callback function or a handler function and will only invoke that function when the operation is completed and it has some response to fulfill the request is received. In this way, there is no idle time between two operations in the event queue.
 
 In summary, Event Loop is responsible to handle and execute these callback functions who are asynchronous in nature. This paradigm is also known as Non-blocking I/O.
 
@@ -52,7 +54,19 @@ The role of a callback function (you can also call the handler function but the 
 
 To make this more clear, let us write our second program. Let us name this file `fast-food.js`.
 
-<iframe height="400px" width="100%" src="https://repl.it/@amandeepmittal/module1-1?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+```js
+function handleCustomerOrder(order) {
+	setTimeout(() => {
+		console.log(`Order of ${order} completed and served!`);
+	}, 1000);
+}
+
+handleCustomerOrder('FRIES');
+
+console.log('Order Placed!');
+```
+
+[Run this program](https://repl.it/@amandeepmittal/module1-1)
 
 To run this program type below command and you will get the following output:
 
