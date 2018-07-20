@@ -10,7 +10,7 @@ To get started, we need to install below dependencies:
 npm install --save passport passport-local passport-jwt jsonwebtoken
 ```
 
-In our , we will start at the point where a user logs in. At this point, the backend will create a signed token (encrypted JWT) and return it to the client as a response. From there, the client will store this token in localstorage and send it back on every request that needs authentication. All requests on server that need authorization are going to be passed through middleware which will be provided by Passportjs.
+In our example, we will start at the point where a user logs in. At this point, the backend will create a signed token (encrypted JWT) and return it to the client as a response. From there, the client will store this token in localstorage and send it back on every request that needs authentication. All requests on server that need authorization are going to be passed through middleware which will be provided by Passportjs.
 
 Let us implement the business logic of login first. Create a file called `passport.js`.
 
