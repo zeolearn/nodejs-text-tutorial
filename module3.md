@@ -1,10 +1,10 @@
 # Events and Streams
 
-Traditionally, in a web server, to process a data in the form of a file by reading and writing consumes a lot more memory since these processing methods needs to load the file every time it has to read or write that file. This is considered a waste of resources. Think of it, in terms of scalability and Big Data if we are wasting resources, we are going to compromise a lot. Node.js asynchronous nature provides two suitable options for us to work with and to provide a flow of data that consumes fewer resources since Node.js is based on non-blocking asynchronous model. They are emitting events and streams. In this section, we will be taking a look at both of them.
+Traditionally, in a web server, to process a data in the form of a file by reading and writing consumes a lot more memory since these processing methods need to load the file every time it has to read or write that file. This is considered a waste of resources. Think of it, in terms of scalability and Big Data if we are wasting resources, we are going to compromise a lot. Node.js asynchronous nature provides two suitable options for us to work with and to provide a flow of data that consumes fewer resources since Node.js is based on a non-blocking asynchronous model. They are emitting events and streams. In this section, we will be taking a look at both of them.
 
 ## EventEmitter Class
 
-EventEmitters are one of the core ideas behind the architecture of event-driven programming or asynchronous programming in Node.js. An EventEmitter is an object and in Node.js any object that emits an event is an instance of EventEmitter class. What is an event? Every action took by the Node.js program such as initialing the web server and closing terminating the program when there is no request left to fulfill are considered as two separate events.
+EventEmitters are one of the core ideas behind the architecture of event-driven programming or asynchronous programming in Node.js. An EventEmitter is an object and in Node.js any object that emits an event is an instance of EventEmitter class. What is an event? Every action took by the Node.js program such as initiating the web server and closing terminating the program when there is no request left to fulfill are considered as two separate events.
 
 To access the EventEmitter class in a Node.js program, you have to require the `events` module from the Node.js API. To create the object, we then make an instance of the EventEmitter class by calling its constructor function.
 
@@ -22,7 +22,7 @@ const EventEmitter = require('events');
 const eventEmitter = new EventEmitter();
 ```
 
-EventEmitter class provides various pre-defined methods to work with events. These methods are `.on`, `.emit` and `.error`. Emiting an event from a function can be done triggering a callback function that can be accessed by any other JavaScript function. This is like broadcasting.
+An EventEmitter class provides various pre-defined methods to work with events. These methods are `.on`, `.emit` and `.error`. Emitting an event from a function can be done triggering a callback function that can be accessed by any other JavaScript function. This is like broadcasting.
 
 The ability to trigger an event can be done by following syntax:
 
@@ -62,7 +62,7 @@ callback runs
 
 [Run](https://repl.it/@amandeepmittal/31)
 
-We start by creating an eventEmitter instance through which we get access to `.on` themethod. The `.on` method adds the event by defining the name `invoke` which we use later on in `.emit` to call trigger the callback function assoicated with it.
+We start by creating an eventEmitter instance through which we get access to `.on` the method. The `.on` method adds the event by defining the name `invoke` which we use later on in `.emit` to call trigger the callback function associated with it.
 
 There is another function that EventEmitter class provides which is called `.once`. This method only invokes the callback function associated with an event first time when an event is emitted. Consider the example below.
 
@@ -168,7 +168,7 @@ readableStream.on('data', function(chunk) {
 
 [Run](https://repl.it/@amandeepmittal/34)
 
-When you run this program, a new file will be created by the writable stream since it has access to file system module. Writable stream uses `.write()` method to output the data on the destination. In the above example, we are creating a new file called `dest.txt` that will contain same data as of `abc.txt`.
+When you run this program, a new file will be created by the writable stream since it has access to the file system module. Writable stream uses `.write()` method to output the data on the destination. In the above example, we are creating a new file called `dest.txt` that will contain the same data as of `abc.txt`.
 
 ## Piping
 

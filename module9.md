@@ -9,7 +9,7 @@ There are more efficient ways to debug a Nodejs application. Available tools are
 
 ## node inspect
 
-Node.js includes debugging utility to run the program in debugging mode using a command line interface. This can be accessed using `node inspect app.js` file. For example, we will use the below code. Create a file called app.js with code below.
+Node.js includes debugging utility to run the program in debugging mode using a command line interface. This can be accessed using `node inspect app.js` file. For example, we will use the below code. Create a file called app.js with the code below.
 
 ```js
 const hello = function() {
@@ -38,7 +38,7 @@ The command line interface comes with keys that we press from the keyboard in or
 - out, o - Step out
 - pause - Pause running code
 
-The debugger take these keys as commands inside the terminal:
+The debugger takes these keys as commands inside the terminal:
 
 ```shell
 debug> s
@@ -46,7 +46,7 @@ debug> s
 
 ## Chrome DevTools
 
-Google's browser Chrome and Nodejs are built using same JavaScript engine called V8. Thus, chrome has an internal support for debugging a Nodejs application. The previous technique is a bit confusing and does not support debugging large or advanced usage.
+Google's browser Chrome and Nodejs are built using the same JavaScript engine called V8. Thus, chrome has an internal support for debugging a Nodejs application. The previous technique is a bit confusing and does not support debugging large or advanced usage.
 
 ```shell
 node --inspect <fileName>
@@ -73,33 +73,33 @@ app.get('/:name?', (req, res) => {
 app.listen(PORT, () => console.log(`App listening on *:${PORT}`));
 ```
 
-Now run the the Nodejs debugging command.
+Now run the Nodejs debugging command.
 
 ```shell
 node --inspect app.js
 ```
 
-You will be prompted with a familiar command line interface as before. This time go to your chrome based browser and open `about://insepct`. Here, you will be be able to access GUI interface to debug a Nodejs app or module using Chrome DevTools.
+You will be prompted with a familiar command-line interface as before. This time go to your chrome based browser and open `about://insepct`. Here, you will be able to access GUI interface to debug a Nodejs app or module using Chrome DevTools.
 
 ![2](images/module-9/2.png)
 
-First click on the configure button and make sure that the target host and post numbers are valid. That is, they are the same as shown in commad line:
+First click on the configure button and make sure that the target host and port numbers are valid. That is, they are the same as shown in command-line:
 
 ```shell
 Debugger listening on ws://127.0.0.1:9229/2ebe0e3a-7056-404a-aee3-e57fa40aa30e
 ```
 
-Next, click on the `Open dedicated DevTools` to start debugging your application’s code. button and it will popup the following window. You will be prompted with below screen. Traverse to your file location from the left side bar.
+Next, click on the `Open dedicated DevTools` to start debugging your application’s code. button and it will pop up the following window. You will be prompted with below screen. Traverse to your file location from the left sidebar.
 
 ![3](images/module-9/9-3.png)
 
-This time, we are not using `debugger` keyword. Chrome DevTools allows you to set break points from its GUI interface. Notice, the blue mark along with line number.
+This time, we are not using `debugger` keyword. Chrome DevTools allows you to set breakpoints from its GUI interface. Notice, the blue mark along with line number.
 
 ![4](images/module-9/9-4.png)
 
-All the debugging controls which we eariler accessed in the commandline are now in right side bar that shows Call Stacka and Scope which is further divided into three sections, local, closure and global. Each variable or method on which the breakpoint is set can be viewed by the breakpoints section.
+All the debugging controls which we earlier accessed in the command-line are now in the right sidebar that shows Call Stacka and Scope which is further divided into three sections, local, closure and global. Each variable or method on which the breakpoint is set can be viewed by the breakpoints section.
 
-The advantage of using this technique to debug Node.js app is that it provide following features that can be used in different scenarios:
+The advantage of using this technique to debug Node.js app is that it provides the following features that can be used in different scenarios:
 
 - to set breakpoints inside the source code
 - control code execution by using step in, step out and step over

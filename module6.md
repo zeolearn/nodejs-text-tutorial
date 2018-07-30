@@ -12,7 +12,7 @@ Now that we have a `package.json` file, we can install Express by running the co
 npm install --save express
 ```
 
-We can confirm that Express has correctly installed by two ways. First way is that there will be a new JSON object in `package.json` file named `dependencies` under which the Express module exists:
+We can confirm that Express has correctly installed in two ways. First, is that there will be a new JSON object in `package.json` file named `dependencies` under which the Express module exists:
 
 ```json
 {
@@ -31,11 +31,11 @@ We can confirm that Express has correctly installed by two ways. First way is th
 }
 ```
 
-Second way to verify is that a new folder called `node_modules` suddenly appears in the root of our project directory. This folder stores the dependencies we install locally to our web server project.
+Second, is to verify is that a new folder called `node_modules` suddenly appears in the root of our project directory. This folder stores the dependencies we install locally to our web server project.
 
 ## Building a Simple Server with Express
 
-In this section we will build a simple server using Express. It is a bare-minimum application that you can develop using this Node.js framework. The first line of our code is using the `require` function to include the `express` module. Before we start using Express, we need to define an instance of Express module that handles the request and response from the server to the client. In our case, it is the constant `app`.
+In this section, we will build a simple server using Express. It is a bare-minimum application that you can develop using this Node.js framework. The first line of our code is using the `require` function to include the `express` module. Before we start using Express, we need to define an instance of Express module that handles the request and response from the server to the client. In our case, it is the constant `app`.
 
 `app.get()` is a function that tells the server what to do when a `get` request at the given route is called. It has a callback function `(req, res)` associated that listens to the incoming request `req` object and respond accordingly using `res` response object. Both `req` and `res` are made available to us by the Express framework.
 
@@ -81,9 +81,9 @@ This is also known as routing paths.
 
 Routing parameters are URL segments that are defined using a name segment to capture different variable values. These values are dynamic in nature and can change accordingly.
 
-For example, we have a route that response back with the information regarding to different book. Each book has a unique id that can be referred in thr URL to access them. In this case, the client will request using a URL such as `/books/124` and in server our route will have a dynamic route such as `/books/:id`. This `:id` is the named segment that can have different values as route parameters which is made of valid ([A-Za-z0-9_]) characters.
+For example, we have a route that response back with the information regarding a different book. Each book has a unique id that can be referred in the URL to access them. In this case, the client will request using a URL such as `/books/124` and in server, our route will have a dynamic route such as `/books/:id`. This `:id` is the named segment that can have different values as route parameters which are made of valid ([A-Za-z0-9_]) characters.
 
-In our previously build server we will add two dynamic routes. First, will send the information regarding a book and second will use symbol such as `*` as a wildcard to indicate that no route exist in our server. Open app.js to modify:
+In our previously build server, we will add two dynamic routes. First, will send the information regarding a book and second will use a symbol such as `*` as a wildcard to indicate that no route exists in our server. Open app.js to modify:
 
 ```js
 const express = require('express');
@@ -139,13 +139,13 @@ app.get('/hello', (req, res) => {
 });
 ```
 
-Express has a method `res.render()` to autmotically identify the template engine we are using and convert that particular template engine file into HTML for the browser to display.
+Express has a method `res.render()` to automatically identify the template engine we are using and convert that particular template engine file into HTML for the browser to display.
 
 If you start the server and visit the route `http://localhost:3000/hello` you will see the output `Hello World` on a web page.
 
 ## Using Blocks for Layout
 
-We will define a layout file in the views directory so that we do not have to write boiler plate code such as `doctype html` in every `.pug` file. `block` is the keyword that allows us to connect a web page to an already existing layout.
+We will define a layout file in the views directory so that we do not have to write boilerplate code such as `doctype html` in every `.pug` file. `block` is the keyword that allows us to connect a web page to an already existing layout.
 
 Create a layout.pug file.
 
@@ -258,7 +258,7 @@ app.post('/form', function(req, res) {
 
 ## Serving Static Files
 
-Often in a server app, there are going to be file such as scripts, stylesheets or images that are going to remain the same. To send them to the client, we use a concept of serving static files.
+Often in a server app, there are going to be a file such as scripts, stylesheets or images that are going to remain the same. To send them to the client, we use a concept of serving static files.
 
 Express support this concept by default. All you need is to create a public directory and put some files in it such as an image file. We use a built in function called `express.static` to serve this folder on the client. By default, Express does not allow to serve static files. We have to use this middleware function.
 
@@ -302,7 +302,7 @@ app.listen(3000, () => console.log('Server listening on port 3000!'));
 
 Most web applications maintain and store user data in sessions. Basically, a session is just a place to store data that can be used with a client's requests, sometimes multiple requests.
 
-Consider this scenario. You create a new Twitter account and after , you access your Twitter account for some amount of time and then you close your browser. Next day you open the web browser and visit Twitter's home URL and but now you do not have to login. How? The browser has stored your credentials as tokens or sessions.
+Consider this scenario. You create a new Twitter account and after, you access your Twitter account for some amount of time and then you close your browser. Next day you open the web browser and visit Twitter's home URL and but now you do not have to log in. How? The browser has stored your credentials as tokens or sessions.
 
 There are different ways to store a session:
 

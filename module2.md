@@ -1,6 +1,6 @@
 # Modularizing Code in Node.js
 
-Before writing Node.js applications you must learn and understand about modules and packages in Node.js. Modules in Node.js are the building blocks of an application. It helps you break down your application into smaller pieces. Node.js follows a similar philosophy from the starts of its origin that has been a common practice in the Unix programming world, that is, "one program should do one thing and it should do very well." Modules in Node.js are nothing but JavaScript files that end with `.js` extension that contains JavaScript code along with usage of Node.js Core API and other third party modules from npm.
+Before writing Node.js applications you must learn and understand about modules and packages in Node.js. Modules in Node.js are the building blocks of an application. It helps you break down your application into smaller pieces. Node.js follows a similar philosophy from the starts of its origin that has been a common practice in the Unix programming world, that is, "one program should do one thing and it should do very well." Modules in Node.js are nothing but JavaScript files that end with `.js` file extension that contains JavaScript code along with usage of Node.js Core API and other third-party modules from npm.
 
 ## Types of modules
 
@@ -19,7 +19,7 @@ function sayHello() {
 }
 ```
 
-This file can be thought of a utility that provides a function which returns the result hello such that we do not have to write this same piece of code multiple times in out Node.js app. We can use this utility multiple times to get the desired result. To use this utility, we must use a `require()` function to include it in other programs. But just requiring the file, will it work?
+This file can be thought of as a utility that provides a function which returns the result hello such that we do not have to write this same piece of code multiple times in out Node.js app. We can use this utility multiple times to get the desired result. To use this utility, we must use a `require()` function to include it in other programs. But just requiring the file, will it work?
 
 The answer is no. Every function or variable declared inside a Node.js file is local to that module. To access any of the function or variable, in our above example, the function `sayHello()` we need to first export it. Each Node.js module type uses `module.exports` to make functions available to different JavaScript files. We can re-write our example as:
 
@@ -73,7 +73,7 @@ module.exports = function sayHi() {
 };
 ```
 
-The above snippet is not the correct way to export from a module. When you want to export multiple objects or functions from a local module, instead of using module.exports we use simply exports. The reason is that `module.exports` refers to the whole module and will only export the last reference, in our example, `sayHi()`. However, `exports` refers to the same object as `module.export`. Take a look at below. Both object means the same.
+The above snippet is not the correct way to export from a module. When you want to export multiple objects or functions from a local module, instead of using module.exports we use simply exports. The reason is that `module.exports` refers to the whole module and will only export the last reference, in our example, `sayHi()`. However, `exports` refers to the same object as `module.export`. Take a look at below. Both objects means the same.
 
 ```js
 const exports = module.exports{};
@@ -184,7 +184,7 @@ But how is this possible? Only in the previous section did we learn that a funct
 
 ## Using npm for Third Party Modules
 
-So far we have seen how to use Node Core module and local module. There is a third type of module that you can use your application. It is called npm modules or third party modules.
+So far we have seen how to use Node Core module and local module. There is a third type of module that you can use your application. It is called npm modules or third-party modules.
 
 npm is a third party registry where anyone can publish a useful local module on the web that people can use. It currently contains more than 400,000 such modules. You can install them through the command line in your project. For that, first, you have to make sure that npm is installed.
 

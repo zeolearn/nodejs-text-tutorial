@@ -77,7 +77,7 @@ Number of files      308
 
 ## execFile()
 
-This function is similar to `exec()` in working but has a few major differences in how it works. First, it does not invoke a shell to run the command and second, the first argument is not a unix based command but rather a file itself. Thus, it can take four argumnets:
+This function is similar to `exec()` in working but has a few major differences in how it works. First, it does not invoke a shell to run the command and second, the first argument is not a unix based command but rather a file itself. Thus, it can take four arguments:
 
 - name of the file
 - unix command
@@ -127,7 +127,7 @@ The cluster module comes with the built-in modules of Node.js and can require wi
 const cluster = require('cluster');
 ```
 
-We can mimic a cluster module example on your local machines too. Create a file called `cluster.js`. We will start by requiring the dependencies. Then, we will first check of the process running is master or a child one. Remember that, the child processes are forked from the master and new processes are created. When a child process is created and gets executed, it then executes the `if` statement (see example below). One of the differences here is that for the child process the value of `cluster.isMaster()` is false, so they ends running the childProcess function.
+We can mimic a cluster module example on your local machines too. Create a file called `cluster.js`. We will start by requiring the dependencies. Then, we will first check of the process running is master or a child one. Remember that, the child processes are forked from the master and new processes are created. When a child process is created and gets executed, it then executes the `if` statement (see example below). One of the differences here is that for the child process the value of `cluster.isMaster()` is false, so they end running the childProcess function.
 
 ```js
 const cluster = require('cluster');

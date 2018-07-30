@@ -4,7 +4,7 @@ Node.js is a great tool to use to build web applications. In fact, the most comm
 
 ## Handling Web Requests
 
-A web server is a software that handles request sent by client like web and mobile browsers using HTTP protocol and in , a response is sent to these clients to fulfill that request. This response can be in form of HTML documents, images, style sheets etc. Node.js is used to write the logic to handle these requests and send the response.
+A web server is a software that handles request sent by client like web and mobile browsers using HTTP protocol and in, a response is sent to these clients to fulfill that request. This response can be in form of HTML documents, images, style sheets etc. Node.js is used to write the logic to handle these requests and send the response.
 
 HTTP is a protocol that is used for content delivery. This content delivery includes both the requests and responses. It is a way of communicating using the internet. Node.js has a built-in module to support this and is called HTTP. This module is responsible for all the incoming requests and sending the responses to the client. To use this module, we require:
 
@@ -116,7 +116,7 @@ Next, the server executes several calls to `response.write()`. These calls are u
 
 ## Understanding the Need for Web Sockets
 
-WebSockets enables web applications to utilize bi-directional messaging. In simple terms, they allow real-time bi-directional flow of data. It is a protocol in which a server can push information to the client at any time since the connection between the now does not depend on HTTP protocol. The server can send information in form of data at any time to the client and the client does not have to send the request to receive data like in HTTP. The same thing applies for the client. It can send the payload of information at any time on the server does not need a success or an error response status from the server.
+WebSockets enables web applications to utilize bi-directional messaging. In simple terms, they allow real-time bi-directional flow of data. It is a protocol in which a server can push information to the client at any time since the connection between the now does not depend on HTTP protocol. The server can send information in form of data at any time to the client and the client does not have to send the request to receive data like in HTTP. The same thing applies to the client. It can send the payload of information at any time on the server does not need a success or an error response status from the server.
 
 Applications like email, instant messaging, document editing, pair programming, and online gaming are some of the examples that use WebSockets. This protocol is currently supported by all major web browsers.
 
@@ -156,7 +156,7 @@ socketio.listen(server).on('connection', function(socket) {
 });
 ```
 
-We are building a chat application and the above code is our server side code. We start by requiring the essential modules we need like `fs` and `http` and the `socket.io` module that just installed. Then with `http` module we create server and open the port 8080. Note that, websocket protocol works as an additional layer over HTTP protocol and this is the reason we need to first create a server using HTTP. After that, we `socketio.listen` to listen on the same host (localhost) and port (8080) thus enabling the connection between the server and the client as bi-directional. `socket.on` opens this connection and socket.broadcat.emit listens to an incoming or outgoing response.
+We are building a chat application and the above code is our server side code. We start by requiring the essential modules we need like `fs` and `http` and the `socket.io` module that just installed. Then with `http` module we create a server and open the port 8080. Note that, websocket protocol works as an additional layer over HTTP protocol and this is the reason we need to first create a server using HTTP. After that, we `socketio.listen` to listen on the same host (localhost) and port (8080) thus enabling the connection between the server and the client as bi-directional. `socket.on` opens this connection and socket.broadcat.emit listens to an incoming or outgoing response.
 
 Now are going to implement the front end part. Create a new file called `index.html` and we will be using socket.io with jQuery here.
 

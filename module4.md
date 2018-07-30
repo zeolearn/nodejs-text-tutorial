@@ -1,6 +1,6 @@
 # Accessing Local Resources
 
-In this tutorial, we are going to start by taking a look at how to interact and use Core Node.js modules (built-in modules). We are going to go through process object, file system module and buffers.
+In this tutorial, we are going to start by taking a look at how to interact and use Core Node.js modules (built-in modules). We are going to go through process object, file system module, and buffers.
 
 ## Process Object
 
@@ -66,7 +66,7 @@ Exited with status code: 0
 
 Using `argv` you can always access to arguments that are passed in a command line. `argv` is an array which has Node itself as the first element and the absolute path of the file as the second element. From the third element onwards it can have as many arguments.
 
-Try the below program to get more insight of how you can use these various properties and functions.
+Try the below program to get more insight into how you can use these various properties and functions.
 
 ```js
 process.stdout.write('Hello World!' + '\n');
@@ -101,11 +101,11 @@ Hello World!
 2: first argument
 ```
 
-If you want to provide strings you to put them inside quotea as the command line interface recognize spaces as a break between two different string literals.
+If you want to provide strings you to put them inside quotes as the command line interface recognize spaces as a break between two different string literals.
 
 ## Manipulating File System
 
-As programmer, there chances are that you are going to access a file system in some application or the other. This includes reading, writing, updating, deleting and renaming a file. Node.js built-in module `fs` takes care of these operations and you can import it into your program using the following syntax:
+As a programmer, the chances are that you are going to access a file system in some application or the other. This includes reading, writing, updating, deleting and renaming a file. Node.js built-in module `fs` takes care of these operations and you can import it into your program using the following syntax:
 
 ```js
 const fs = require('fs');
@@ -299,7 +299,7 @@ When returned, this function might contain old data that needs to be overwritten
 
 ### Interactions with Buffer
 
-There are different interactions that can be made with the Buffer API. We are going to cover most of them here. Let us start with converting a buffer to JSON.
+There are different interactions that can be made with the Buffer API. We are going to cover most of them here. Let us start by converting a buffer to JSON.
 
 ```javascript
 let bufferOne = Buffer.from('This is a buffer example.');
